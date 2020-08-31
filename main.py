@@ -11,7 +11,7 @@ def is_int(string):
 def print_passage(group):
     # print title
     title = group.find('h3', class_='readings__reference');
-    cprint(title.get_text(), 'green');
+    cprint(title.get_text() + '\n', 'green');
     verses = group.find_all('span');
 
     for verse in verses:
@@ -19,7 +19,7 @@ def print_passage(group):
 
         # if we have a verse number, print it in color
         if is_int(verse):
-            cprint(verse.strip() + ' ', 'blue', end='')
+            cprint(verse.strip() + '.', 'blue', end='')
         else:
             print(verse.strip() + ' ', end='');
 
