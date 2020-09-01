@@ -16,14 +16,32 @@ def print_passage(group):
 
     for verse in verses:
         verse = verse.get_text()
+        verse = verse.strip()
 
         # if we have a verse number, print it in color
         if is_int(verse):
-            cprint(verse.strip() + '.', 'blue', end='')
+            cprint(verse + '.', 'blue', end='')
         else:
-            print(verse.strip() + ' ', end='');
+            verse = verse.split()
+            counter = 0;
+            for word in verse:
+                word_len = len(word)
 
-    print('');
+                if counter + word_len > 80:
+                    print('\n', end='')
+                    print(word + ' ', end='')
+                    counter = word_len
+                else:
+                    print(word + ' ', end='')
+                    counter += word_len
+
+                if (counter > 80):
+                    print('\n', end='')
+                    counter = 0
+            print(' ')
+
+
+    print('\n');
 
 def main():
     # Get daily reading html
@@ -40,6 +58,6 @@ def main():
     for passage in reading_passage:
         print_passage(passage);
 
-#if __name__ == "__main__":
-#    main()
+if __name__ == "__main__":
+    main()
 
