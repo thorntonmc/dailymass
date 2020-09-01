@@ -25,19 +25,21 @@ def print_passage(group):
 
     print('');
 
-# Get daily reading html
-daily="https://www.ewtn.com/catholicism/daily-readings"
-r = requests.get(daily);
+def main():
+    # Get daily reading html
+    daily="https://www.ewtn.com/catholicism/daily-readings"
+    r = requests.get(daily);
 
-# parse into soup
-soup = BeautifulSoup(r.text, features="html.parser")
+    # parse into soup
+    soup = BeautifulSoup(r.text, features="html.parser")
 
-# get all divs
+    # get all divs
 
-reading_passage = soup.find_all('div', class_='readings__group')
+    reading_passage = soup.find_all('div', class_='readings__group')
 
-for passage in reading_passage:
-    print_passage(passage);
+    for passage in reading_passage:
+        print_passage(passage);
 
-
+#if __name__ == "__main__":
+#    main()
 
