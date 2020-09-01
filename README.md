@@ -1,3 +1,6 @@
 # Daily-Mass-Readings-from-EWTN
+
 To Install:
-`sudo python3 setup.py install`
+`pip3 install .`
+
+Make sure $HOME/.local/bin$ is in your path or this won't work.
